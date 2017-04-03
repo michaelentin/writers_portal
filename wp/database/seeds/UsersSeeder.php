@@ -25,7 +25,7 @@ class UsersSeeder extends Seeder
     	$u->email = 'dev@gmail.com';
     	$u->password = bcrypt('password');
     	$u->save();
-    };
+    }
 
     private function mike()
     {

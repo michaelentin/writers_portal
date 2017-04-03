@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Comment;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+
 
 class ContentController extends Controller
 {
@@ -33,10 +37,14 @@ class ContentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $req)
     {
         // Use request('form_portion_name_here') to obtain different sections of the form
-
+        $c = new \App\Content();
+      	$c->user_id = Auth::user()->id;
+      	$c->title = $req->title;
+      	$c->save();
+        return redirect('/home');
     }
 
     /**
@@ -79,8 +87,9 @@ class ContentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $req)
     {
-        //
+      DB::table('contents')->where('id', '=', $req->content_id)->delete();
+      return back();
     }
 }

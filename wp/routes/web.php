@@ -23,9 +23,10 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('user/{user}', 'UserController@show');
 
+
 // Anything placed after auth::routes requires authentication to get to
 // Since it's a forum, just about anything can be "reached" if a user is
-// not logged in, however, we will have to do some checking for certain 
+// not logged in, however, we will have to do some checking for certain
 // functionalities (voting, etc...)
 
 Auth::routes();
@@ -34,7 +35,13 @@ Auth::routes();
 
 // Standard convention: Route::get('contents/{content}', 'ContentController@show');
 
+Route::post('/upvote', 'VoteController@upvote');
+Route::post('/downvote', 'VoteController@downvote');
+
+Route::post('/delete', 'ContentController@destroy');
+
 Route::post('/contents/{content}/comments', 'CommentController@store');
+Route::post('/contents/uploadart', 'ContentController@store');
 
 Route::post('library/addContent', 'LibraryContentController@store');
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -36,7 +37,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -49,7 +50,12 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $current = Auth::user();
-        return view('users.show', compact('user', 'current'));
+
+        //$user = User::with('content')->find($id);
+
+        $contents = DB::table('contents')->where('user_id', $id)->get();
+
+        return view('users.show', compact('user', 'contents'));
     }
 
     /**
@@ -85,5 +91,5 @@ class UserController extends Controller
     {
         //
     }
-    
+
 }
