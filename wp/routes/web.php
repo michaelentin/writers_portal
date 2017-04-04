@@ -42,8 +42,10 @@ Route::post('/downvote', 'VoteController@downvote');
 
 Route::post('/delete', 'ContentController@destroy');
 
+Route::post('/contents/{content}', 'ContentController@show');
 Route::post('/contents/{content}/comments', 'CommentController@store');
 Route::post('/contents/uploadart', 'ContentController@store');
+
 
 Route::post('library/addContent', 'LibraryContentController@store');
 

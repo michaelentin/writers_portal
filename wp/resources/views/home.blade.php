@@ -46,7 +46,11 @@
 
                           {!! Form::open(['url' => 'library/addContent']) !!}
                               {!! Form::hidden('content_id', $content->id) !!}
-                              {!! Form::submit('Add to your Library', array('class' => 'btn btn-primary')) !!}
+                              {!! Form::submit('Add Art To Library', array('class' => 'btn btn-primary')) !!}
+                          {!! Form::close() !!}
+
+                          {!! Form::open(['url' => 'contents/' . $content->id]) !!}
+                              {!! Form::submit('Full View', array('class' => 'btn btn-primary')) !!}
                           {!! Form::close() !!}
 
                       <hr>
