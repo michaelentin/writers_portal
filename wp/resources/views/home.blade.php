@@ -35,7 +35,12 @@
                       <h1> {{ $content->title }}  </h1>
 
 
-                      <h3> Uploaded by {{ $content->user->username }} on {{ $content->created_at->toFormattedDateString() }}</h3>
+                      <h3> Uploaded by 
+                        <a href="/user/{{ $content->user->id }}">
+                        {{ $content->user->username }}
+                        </a> 
+                        on {{ $content->created_at->toFormattedDateString() }}
+                      </h3>
 
                       This is where content links will be placed
 
