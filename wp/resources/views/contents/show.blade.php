@@ -1,14 +1,48 @@
 @extends('layouts.app')
 @section('content')
 
-<h1 align="center">{{ $content->title }} </h1>
+<div align="left">
+<div class="col-md-2">
 
-<h2 align="center">written by {{ $content->user->username }}</h2>
+<div class="row" align="right">
+	{!! Form::open(['url' => '/downvote']) !!}
+	{!! Form::hidden('content_id', $content->id) !!}
+	{!! Form::hidden('rank', $content->rank) !!}
+	    {!! Form::submit('v', array('class' => 'btn btn-primary')) !!}
+	{!! Form::close() !!}
+	</div>
+	
+</div>
 
-<h3 align="center"> Summary </h3>
+<div class="col-md-7">
 
-<h5 align="center">{{ $content->summary }} </h5>
+<div align="center">
 
-<h6 align="center"> This is where users will be able to read content</h6>
+	<h1>{{ $content->title }} </h1>
+
+	<h2>written by {{ $content->user->username }}</h2>
+
+	<h3>Rank: {{ $content->rank }}</h3>
+
+	<h3>Summary</h3>
+
+	<h4>{{ $content->summary }} </h4>
+
+	<h6>This is where users will be able to read content</h6>
+
+</div>
+
+</div>
+
+<div class="col-md-2">
+	<div class="row">
+	{!! Form::open(['url' => '/upvote']) !!}
+	{!! Form::hidden('content_id', $content->id) !!}
+	{!! Form::hidden('rank', $content->rank) !!}
+	    {!! Form::submit('^', array('class' => 'btn btn-primary')) !!}
+	{!! Form::close() !!}
+
+	</div>
+</div>
 
 @endsection
