@@ -19,9 +19,9 @@ Route::get('/facebook', 'Auth\LoginController@redirectToProvider');
 
 Route::get('login/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::get('/home', 'HomeController@index');
-
 Route::get('user/{user}', 'UserController@show');
+
+
 
 
 // Anything placed after auth::routes requires authentication to get to
@@ -32,6 +32,8 @@ Route::get('user/{user}', 'UserController@show');
 Auth::routes();
 
 //TODO: Content@show
+
+Route::get('/home', 'HomeController@index');
 
 // Standard convention: Route::get('contents/{content}', 'ContentController@show');
 
