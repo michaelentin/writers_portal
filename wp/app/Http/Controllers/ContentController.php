@@ -44,6 +44,7 @@ class ContentController extends Controller
         $c = new \App\Content();
       	$c->user_id = Auth::user()->id;
       	$c->title = $req->title;
+        $c->summary = $req->summary;
       	$c->save();
         return redirect('/home');
     }

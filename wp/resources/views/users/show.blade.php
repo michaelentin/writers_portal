@@ -33,6 +33,8 @@
 
     <textarea name="title" placeholder="Name your art here" class="form-control"></textarea>
 
+    <textarea name="summary" placeholder="Give readers a short summary" class="form-control"></textarea>
+
     {{-- TODO add files once we get there --}}
 
     <div class="dropdown">

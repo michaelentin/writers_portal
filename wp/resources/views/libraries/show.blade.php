@@ -3,7 +3,12 @@
 
 @foreach($contents as $content)
 
-<h1> {{ $content->title }}  // show file link here to read novel</h1>
+
+<div align="center">
+{!! Form::open(['url' => 'contents/' . $content->id]) !!}
+    {!! Form::submit($content->title, array('class' => 'btn btn-primary')) !!}
+{!! Form::close() !!}
+</div>
 
 @endforeach
 

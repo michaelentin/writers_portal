@@ -17,6 +17,7 @@ class CreateContentsTable extends Migration
             $table->increments('id');
             $table->integer('rank')->default('0');
             $table->string('title');
+            $table->string('summary');
             $table->integer('user_id');
             $table->timestamps();
         });
