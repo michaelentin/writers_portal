@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Input;
 use \App\Comment;
 use \App\Content;
 use Illuminate\Support\Facades\Auth;
@@ -40,7 +41,6 @@ class ContentController extends Controller
      */
     public function store(Request $req)
     {
-        // Use request('form_portion_name_here') to obtain different sections of the form
         $c = new \App\Content();
       	$c->user_id = Auth::user()->id;
       	$c->title = $req->title;

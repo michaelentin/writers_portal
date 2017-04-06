@@ -19,9 +19,9 @@ class Content extends Model
     public function addComment($body, $user_id)
     {
         // creates a new comment
-        
+
         $this->comments()->create([
-            'body' => $body, 
+            'body' => $body,
             'user_id' => $user_id
         ]);
     }

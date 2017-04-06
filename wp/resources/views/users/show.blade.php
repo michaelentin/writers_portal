@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 @extends('layouts.app')
 @section('content')
 
@@ -24,33 +25,26 @@
 <h1>Add new art</h1>
 
 <form method="POST" action="/contents/uploadart">
-
-    {{-- if we need to do something other than post in laravel, use
-
-    {{ method_field('DELETE') }} to delete or {{ method_field('PATCH') }} for patching --}}
-
-    {{ csrf_field() }}
-
-    <textarea name="title" placeholder="Name your art here" class="form-control"></textarea>
-
-    <textarea name="summary" placeholder="Give readers a short summary" class="form-control"></textarea>
-
-    {{-- TODO add files once we get there --}}
-
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select tag(s)
-      <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        <li><a href="#">Drama</a></li>
-        <li><a href="#">Horror</a></li>
-        <li><a href="#">Sci-Fi</a></li>
-      </ul>
+   {{ csrf_field() }}
+  <div class="form-group row">
+    <label for="example-text-input" class="col-1 col-form-label"></label>
+    <label for="example-text-input" class="col-1 col-form-label">Title</label>
+    <div class="col-5">
+      <input name="title" class="form-control" type="text" placeholder="title of your work" >
     </div>
-
-    <button type="submit" class="btn btn-primary">Upload Art</button>
-
+  </div>
+  <div class="form-group row">
+    <label for="example-text-input" class="col-1 col-form-label"></label>
+    <label for="example-search-input" class="col-1 col-form-label">Summary</label>
+    <div class="col-8">
+      <input name="summary" class="form-control" type="search" placeholder="add a summary about your work">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="example-search-input" class="col-2 col-form-label"></label>
+    <div class="col-10">
+      <button type="submit" class="btn btn-primary">Upload Art</button>
+    </div>
+  </div>
 </form>
-
-
-
 @endsection
