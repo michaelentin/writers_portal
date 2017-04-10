@@ -13,6 +13,7 @@
     <div class="col-md-2">
       {!! Form::open(['url' => '/delete']) !!}
       {!! Form::hidden('content_id', $content->id) !!}
+      {!! Form::hidden('name', $content->filename) !!}
           {!! Form::submit('delete', array('class' => 'btn btn-danger')) !!}
       {!! Form::close() !!}
     </div>
@@ -24,7 +25,7 @@
 
 <h1>Add new art</h1>
 
-<form method="POST" action="/contents/uploadart">
+<form method="POST" action="/contents/uploadart" enctype="multipart/form-data">
    {{ csrf_field() }}
   <div class="form-group row">
     <label for="example-text-input" class="col-1 col-form-label"></label>
@@ -41,10 +42,18 @@
     </div>
   </div>
   <div class="form-group row">
-    <label for="example-search-input" class="col-2 col-form-label"></label>
-    <div class="col-10">
-      <button type="submit" class="btn btn-primary">Upload Art</button>
+    <label for="example-text-input" class="col-1 col-form-label"></label>
+    <label for="example-search-input" class="col-1 col-form-label">Upload file</label>
+    <div class="col-8">
+      <input name="fileToUpload" type="file">
     </div>
   </div>
+  <div class="form-group row">
+    <label for="example-search-input" class="col-2 col-form-label"></label>
+    <div class="col-10">
+      <button type="submit" name="submit" class="btn btn-primary">Upload Art</button>
+    </div>
+  </div>
+
 </form>
 @endsection
