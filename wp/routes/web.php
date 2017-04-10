@@ -38,6 +38,7 @@ Route::get('/home', 'HomeController@index');
 // Standard convention: Route::get('contents/{content}', 'ContentController@show');
 
 Route::post('/upvote', 'VoteController@upvote');
+Route::post('/openpdf', 'ContentController@showpdf');
 Route::post('/downvote', 'VoteController@downvote');
 
 Route::post('/delete', 'ContentController@destroy');
