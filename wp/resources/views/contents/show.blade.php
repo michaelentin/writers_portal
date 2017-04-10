@@ -11,7 +11,7 @@
 	    {!! Form::submit('v', array('class' => 'btn btn-primary')) !!}
 	{!! Form::close() !!}
 	</div>
-	
+
 </div>
 
 <div class="col-md-7">
@@ -28,8 +28,10 @@
 
 	<h4>{{ $content->summary }} </h4>
 
-	<h6>This is where users will be able to read content</h6>
-
+	{!! Form::open(['url' => '/openpdf']) !!}
+	{!! Form::hidden('filename', $content->filename) !!}
+	    {!! Form::submit('read', array('class' => 'btn btn-primary')) !!}
+	{!! Form::close() !!}
 </div>
 
 </div>
