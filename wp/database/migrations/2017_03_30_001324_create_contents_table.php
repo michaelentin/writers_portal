@@ -19,6 +19,7 @@ class CreateContentsTable extends Migration
             $table->string('title');
             $table->string('summary');
             $table->integer('user_id');
+            $table->string('filename');
             $table->timestamps();
         });
     }
