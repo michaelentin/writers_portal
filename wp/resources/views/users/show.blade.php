@@ -1,15 +1,14 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 @extends('layouts.app')
 @section('content')
 
-<h1>{{ $user->username }}'s profile</h1>
+<h1 align="center">{{ $user->username }}'s profile</h1>
 
 @if($user->id == Auth::user()->id)
 
 <hr style="border-bottom:1px solid;">
 
-<h1>Add new art</h1>
-
+<div class="col-md-4 col-md-offset-4">
+<h1 align="center">Add new art</h1>
 <form method="POST" action="/contents/uploadart" enctype="multipart/form-data">
    {{ csrf_field() }}
   <div class="form-group row">
@@ -23,7 +22,7 @@
     <label for="example-text-input" class="col-1 col-form-label"></label>
     <label for="example-search-input" class="col-1 col-form-label">Summary</label>
     <div class="col-8">
-      <input name="summary" class="form-control" type="search" placeholder="add a summary about your work">
+      <textarea name="summary" placeholder="summarize your content here" class="form-control"></textarea>
     </div>
   </div>
   <div class="form-group row">
@@ -41,15 +40,19 @@
   </div>
 
 </form>
+</div>
+
 
 @endif
 
+<div class="col-md-12">
 <hr style="border-bottom:1px solid;">
+<h1 align="center">Your Art</h1>
 
 @foreach ($contents as $content)
   <div class="row">
-    <div class="col-md-10">
-      <h1> {{ $content->title }}  </h1>
+    <div class="col-md-8">
+      <h3 align="center"> {{ $content->title }}  </h3>
     </div>
     <div class="col-md-2">
     @if($user->id == Auth::user()->id)
@@ -64,6 +67,7 @@
       {!! Form::close() !!}
     </div>
   </div>
-
+<hr>
 @endforeach
+</div>
 @endsection
