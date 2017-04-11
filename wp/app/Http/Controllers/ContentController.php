@@ -104,6 +104,7 @@ class ContentController extends Controller
      */
     public function show(Content $content)
     {
+        $content = Content::with('user', 'comments.user')->find($content->id);
         return view('contents.show', compact('content'));
     }
 

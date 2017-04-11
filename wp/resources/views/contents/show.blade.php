@@ -32,6 +32,35 @@
 	{!! Form::hidden('filename', $content->filename) !!}
 	    {!! Form::submit('read', array('class' => 'btn btn-primary')) !!}
 	{!! Form::close() !!}
+
+	<hr>
+
+	<h5>Comments</h5>
+
+@foreach ($content->comments as $comment)
+
+    <li class="list-group-item">
+
+    <strong> {{ $comment->created_at->diffForHumans() }} from
+        <a href="/user/{{ $comment->user->id }}">
+            {{ $comment->user->username }}:
+        </a>
+    </strong>
+
+    <br>
+
+    {{ $comment->body }}
+
+    @if($comment->user->id == Auth::user()->id)
+    {!! Form::open(['url' => '/comments/delete']) !!}
+        {!! Form::hidden('comment_id', $comment->id) !!}
+        {!! Form::submit('delete', array('class' => 'btn btn-danger')) !!}
+    {!! Form::close() !!}
+    @endif
+
+    </li>
+
+@endforeach
 </div>
 
 </div>
