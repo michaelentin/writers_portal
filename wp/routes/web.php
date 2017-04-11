@@ -46,6 +46,7 @@ Route::post('/openpdf', 'ContentController@showpdf');
 Route::post('/downvote', 'VoteController@downvote');
 
 Route::post('/delete', 'ContentController@destroy');
+Route::post('/comments/delete', 'CommentController@destroy');
 
 Route::post('/contents/uploadart', 'ContentController@store');
 Route::post('/contents/{content}', 'ContentController@show');

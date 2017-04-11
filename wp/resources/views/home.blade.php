@@ -75,6 +75,13 @@
 
                                     {{ $comment->body }}
 
+                                    @if($comment->user->id == Auth::user()->id)
+                                    {!! Form::open(['url' => '/comments/delete']) !!}
+                                        {!! Form::hidden('comment_id', $comment->id) !!}
+                                        {!! Form::submit('delete', array('class' => 'btn btn-danger')) !!}
+                                    {!! Form::close() !!}
+                                    @endif
+
                                     </li>
                                   @else
                                     @break;
