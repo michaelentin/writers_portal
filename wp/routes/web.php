@@ -21,6 +21,10 @@ Route::get('login/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('user/{user}', 'UserController@show');
 
+Route::post('user/{user}/edit', 'UserController@edit');
+
+Route::post('user/{user}/update', 'UserController@update');
+
 
 
 

@@ -66,7 +66,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -76,9 +78,26 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+       $user = User::find($request->user_id);
+
+       $this->validate($request, [
+        'username' => 'required|min:2',
+        'firstName' => 'required',
+        'lastName' => 'required',
+        'email' => 'required'
+        ]);
+
+        $user->username = $request->username;
+        $user->firstName = $request->firstName;
+        $user->lastName = $request->lastName;
+        $user->email = $request->email;
+        $user->save();
+
+        $contents = DB::table('contents')->where('user_id', $user->id)->get();
+
+        return view('users.show', compact('user', 'contents'));
     }
 
     /**

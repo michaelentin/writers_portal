@@ -30,7 +30,7 @@ class UsersSeeder extends Seeder
     private function mike()
     {
         $u = new App\User();
-        $u->username = 'mikey__bags';
+        $u->username = 'BIG_MAC_LOVER27';
         $u->firstName = 'Michael';
         $u->lastName = 'whatever';
         $u->email = 'mentin@iastate.edu';

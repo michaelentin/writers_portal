@@ -5,6 +5,13 @@
 
 @if($user->id == Auth::user()->id)
 
+<div align="center">
+{!! Form::open(['url' => 'user/' . $user->id . '/edit']) !!}
+  {!! Form::hidden('user_id', $user->id) !!}
+  {!! Form::submit('Edit Profile', array('class' => 'btn btn-primary')) !!}
+{!! Form::close() !!}
+</div>
+
 <hr style="border-bottom:1px solid;">
 
 <div class="col-md-4 col-md-offset-4">
@@ -47,7 +54,10 @@
 
 <div class="col-md-12">
 <hr style="border-bottom:1px solid;">
+@if($user->id == Auth::user()->id)
 <h1 align="center">Your Art</h1>
+@endif
+<h1 align="center">{{ $user->username }}'s Art</h1>
 
 @foreach ($contents as $content)
   <div class="row">
