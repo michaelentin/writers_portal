@@ -3,23 +3,8 @@
 @section('content')
 
 <h1>{{ $user->username }}'s profile</h1>
-<hr style="border-bottom:1px solid;">
 
-@foreach ($contents as $content)
-  <div class="row">
-    <div class="col-md-10">
-      <h1> {{ $content->title }}  </h1>
-    </div>
-    <div class="col-md-2">
-      {!! Form::open(['url' => '/delete']) !!}
-      {!! Form::hidden('content_id', $content->id) !!}
-      {!! Form::hidden('name', $content->filename) !!}
-          {!! Form::submit('delete', array('class' => 'btn btn-danger')) !!}
-      {!! Form::close() !!}
-    </div>
-  </div>
-
-@endforeach
+@if($user->id == Auth::user()->id)
 
 <hr style="border-bottom:1px solid;">
 
@@ -56,4 +41,29 @@
   </div>
 
 </form>
+
+@endif
+
+<hr style="border-bottom:1px solid;">
+
+@foreach ($contents as $content)
+  <div class="row">
+    <div class="col-md-10">
+      <h1> {{ $content->title }}  </h1>
+    </div>
+    <div class="col-md-2">
+    @if($user->id == Auth::user()->id)
+      {!! Form::open(['url' => '/delete']) !!}
+      {!! Form::hidden('content_id', $content->id) !!}
+      {!! Form::hidden('name', $content->filename) !!}
+          {!! Form::submit('delete', array('class' => 'btn btn-danger')) !!}
+      {!! Form::close() !!}
+      @endif
+      {!! Form::open(['url' => 'contents/' . $content->id]) !!}
+          {!! Form::submit('Full View', array('class' => 'btn btn-primary')) !!}
+      {!! Form::close() !!}
+    </div>
+  </div>
+
+@endforeach
 @endsection
