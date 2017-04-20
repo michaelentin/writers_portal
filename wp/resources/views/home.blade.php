@@ -1,5 +1,32 @@
 @extends('layouts.app')
 
+@section('navbar_left')
+<li>
+  {!! Form::open(['url' => '/sort']) !!}
+    {!! Form::hidden('sort_id', '0') !!}
+    {!! Form::submit('Most Popular', array('class' => 'btn btn-primary')) !!}
+  {!! Form::close() !!}
+</li>
+<li>
+  {!! Form::open(['url' => '/sort']) !!}
+    {!! Form::hidden('sort_id', '1') !!}
+    {!! Form::submit('Least Popular', array('class' => 'btn btn-primary')) !!}
+  {!! Form::close() !!}
+</li>
+<li>
+<form action="/home">
+    <input type="submit" class="btn btn-primary" value="Most Recent" />
+</form>
+</li>
+<li>
+  {!! Form::open(['url' => '/sort']) !!}
+    {!! Form::hidden('sort_id', '2') !!}
+    {!! Form::submit('Least Recent', array('class' => 'btn btn-primary')) !!}
+  {!! Form::close() !!}
+</li>
+
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row">

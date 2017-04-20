@@ -39,6 +39,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::post('/sort', 'HomeController@sort');
+
 // Standard convention: Route::get('contents/{content}', 'ContentController@show');
 
 Route::post('/upvote', 'VoteController@upvote');
